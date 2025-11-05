@@ -1,4 +1,4 @@
-#include "PizzaBuilder.h"
+﻿#include "PizzaBuilder.h"
 #include <iostream>
 
 PizzaBuilder::PizzaBuilder() {
@@ -8,19 +8,12 @@ void PizzaBuilder::BuildPizza() {
     std::cout << "=== Pizza Builder ===" << std::endl;
     std::cout << "Let's build your pizza!" << std::endl;
 
-    while (true) {
-        DisplayAvailableTomatoes();
+    SelectTomatoes();
 
-        std::cout << "\nEnter tomato type (or 'done' to finish): ";
-        std::string userChoice;
-        std::getline(std::cin, userChoice);
-
-        if (userChoice == "done" || userChoice == "DONE") {
-            break;
-        }
-
-        AddTomatoToPizza(userChoice);
-    }
+    // TODO
+    //SelectCheese();
+    //SelectHerbs();
+    //SelectMeats();
 }
 
 void PizzaBuilder::DisplayFinalPizza() const {
@@ -35,32 +28,39 @@ void PizzaBuilder::DisplayFinalPizza() const {
     }
 }
 
-void PizzaBuilder::DisplayAvailableTomatoes() {
-    std::cout << "\nAvailable tomato types:" << std::endl;
-    for (const auto& tomato : availableTomatoes_) {
-        try {
-            int quantity = tomatoRepo_.GetAvailableQuantity(tomato);
-            std::cout << "- " << tomato << " (Available: " << quantity << ")" << std::endl;
-        } catch (const std::invalid_argument&) {
-            std::cout << "- " << tomato << " (Not available)" << std::endl;
+void PizzaBuilder::SelectTomatoes() {
+
+    std::cout << "\n--- Selecting Tomatoes ---" << std::endl;
+
+    // TODO: Reusar esta linea, pero con su propio Repositorio.
+    IngredientSelector<TomatoesRepository> selector(tomatoRepo_, availableTomatoes_, "tomato");
+
+    while (true) {
+        selector.DisplayAvailableIngredients();
+
+        std::cout << "\nEnter tomato type (or 'done' to finish): ";
+        std::string userChoice;
+        std::getline(std::cin, userChoice);
+
+        if (userChoice == "done" || userChoice == "DONE") {
+            break;
         }
+
+        selector.AddIngredientToPizza(userChoice, selectedIngredients_);
     }
 }
 
-bool PizzaBuilder::AddTomatoToPizza(const std::string& tomatoType) {
-    try {
-        int quantity = tomatoRepo_.GetAvailableQuantity(tomatoType);
-        if (quantity > 0) {
-            selectedIngredients_.push_back(tomatoType);
-            tomatoRepo_.UpdateQuantity(tomatoType, quantity - 1);
-            std::cout << "Added " << tomatoType << " to your pizza!" << std::endl;
-            return true;
-        } else {
-            std::cout << "Sorry, " << tomatoType << " tomato can't be added at this time. Please choose another one." << std::endl;
-            return false;
-        }
-    } catch (const std::invalid_argument&) {
-        std::cout << "Sorry, " << tomatoType << " is not a valid tomato type. Please choose from the available options." << std::endl;
-        return false;
-    }
-}
+// TODO:  Crear cada uno su parte. ☝️ toma el ejemplo de  SelectTomatoes y crea tu propia implementación.
+
+
+//void PizzaBuilder::SelectCheese() {
+// // Resolver.    
+//}
+//
+//void PizzaBuilder::SelectHerb() {
+//    // Resolver.    
+//}
+//
+//void PizzaBuilder::SelectMeat() {
+//    // Resolver.    
+//}

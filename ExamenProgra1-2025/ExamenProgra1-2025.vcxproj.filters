@@ -21,6 +21,9 @@
     <ClCompile Include="DataLoader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="IngredientSelector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="PizzaBuilder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -30,6 +33,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DataLoader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IngredientSelector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PizzaBuilder.h">

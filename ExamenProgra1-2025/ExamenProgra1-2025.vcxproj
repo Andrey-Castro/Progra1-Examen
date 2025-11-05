@@ -124,12 +124,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DataLoader.cpp" />
+    <ClCompile Include="IngredientSelector.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PizzaBuilder.cpp" />
     <ClCompile Include="TomatoesRepository.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DataLoader.h" />
+    <ClInclude Include="IngredientSelector.h" />
     <ClInclude Include="PizzaBuilder.h" />
     <ClInclude Include="TomatoesRepository.h" />
   </ItemGroup>
@@ -138,6 +140,9 @@
     <Text Include="herbs.txt" />
     <Text Include="meats.txt" />
     <Text Include="tomatoes.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="README.md" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
