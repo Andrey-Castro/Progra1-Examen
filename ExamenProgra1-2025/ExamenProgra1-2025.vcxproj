@@ -126,6 +126,7 @@
     <ClCompile Include="..\..\..\..\..\Downloads\MeatsRepository.cpp" />
     <ClCompile Include="CheeseRepository.cpp" />
     <ClCompile Include="DataLoader.cpp" />
+    <ClCompile Include="HerbsRepository.cpp" />
     <ClCompile Include="IngredientSelector.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PizzaBuilder.cpp" />
@@ -135,6 +136,7 @@
     <ClInclude Include="..\..\..\..\..\Downloads\MeatsRepository.h" />
     <ClInclude Include="CheeseRepository.h" />
     <ClInclude Include="DataLoader.h" />
+    <ClInclude Include="HerbsRepository.h" />
     <ClInclude Include="IngredientSelector.h" />
     <ClInclude Include="PizzaBuilder.h" />
     <ClInclude Include="TomatoesRepository.h" />
