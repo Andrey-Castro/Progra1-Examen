@@ -1,4 +1,6 @@
-#pragma once
+#include "MeatsRepository.h"
+#include "TomatoesRepository.h"
+#include <map>
 #include <vector>
 #include <string>
 #include "TomatoesRepository.h"
@@ -8,17 +10,12 @@
 class PizzaBuilder {
 public:
     PizzaBuilder();
-
     void BuildPizza();
     void DisplayFinalPizza() const;
+    void SelectTomatoes();
+    void SelectMeats();
 
 private:
-    void SelectTomatoes();
-    void SelectCheese();
-    void SelectHerb();
-    void SelectMeat();
-
-    TomatoesRepository tomatoRepo_;
     std::vector<std::string> selectedIngredients_;
     HerbsRepository herbsRepo_{ "herbs.txt" };
 
