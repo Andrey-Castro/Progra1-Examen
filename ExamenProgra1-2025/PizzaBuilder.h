@@ -1,25 +1,21 @@
-#pragma once
+#include "MeatsRepository.h"
+#include "TomatoesRepository.h"
+#include <map>
 #include <vector>
 #include <string>
-#include "TomatoesRepository.h"
-#include "IngredientSelector.h"
 
 class PizzaBuilder {
 public:
     PizzaBuilder();
-
     void BuildPizza();
     void DisplayFinalPizza() const;
+    void SelectTomatoes();
+    void SelectMeats();
 
 private:
-    void SelectTomatoes();
-    void SelectCheese();
-    void SelectHerb();
-    void SelectMeat();
-
-    TomatoesRepository tomatoRepo_;
     std::vector<std::string> selectedIngredients_;
-
-    const std::vector<std::string> availableTomatoes_ = {"Cherry", "Roma", "Beefsteak", "Heirloom", "Grape"};
-    const std::vector<std::string> availableCheeses_ = {"Mozzarella", "Cheddar", "Parmesan", "Cream Cheese", "Gouda", "Blue Cheese", "Feta"};
+    TomatoesRepository tomatoRepo_;
+    MeatsRepository meatRepo_;
+    std::map<std::string, std::vector<std::string>> availableTomatoes_;
+    std::map<std::string, std::vector<std::string>> availableMeats_;
 };
