@@ -1,10 +1,13 @@
 ﻿#include "PizzaBuilder.h"
 #include <iostream>
+#include "HerbsRepository.h" 
+#include "IngredientSelector.h"
 
 PizzaBuilder::PizzaBuilder() {
 }
 
 void PizzaBuilder::BuildPizza() {
+    SelectHerb();
     std::cout << "=== Pizza Builder ===" << std::endl;
     std::cout << "Let's build your pizza!" << std::endl;
 
@@ -13,6 +16,17 @@ void PizzaBuilder::BuildPizza() {
     // TODO
     //SelectCheese();
     //SelectHerbs();
+
+    TomatoesRepository tomatoRepo_;
+    HerbsRepository herbRepo_{ "herbs.txt" }; // 🌿 Crea el repositorio de hierbas
+
+    std::vector<std::string> availableTomatoes_ = { "roma", "cherry" };
+    std::vector<std::string> availableHerbs_ = { "basil", "oregano", "rosemary", "parsley" }; // 🌿 Lista de hierbas
+
+    std::vector<std::string> selectedIngredients_;
+
+    void SelectTomatoes();
+  
     //SelectMeats();
 }
 
@@ -49,6 +63,28 @@ void PizzaBuilder::SelectTomatoes() {
         selector.AddIngredientToPizza(userChoice, selectedIngredients_);
     }
 }
+void PizzaBuilder::SelectHerb() {
+    std::cout << "\n--- Selecting Herbs ---" << std::endl;
+
+    // Crea un selector para hierbas, usando tu repositorio y lista de ingredientes disponibles
+    IngredientSelector<HerbsRepository> selector(herbsRepo_, availableHerbs_, "herb");
+
+    while (true) {
+        selector.DisplayAvailableIngredients();
+
+        std::cout << "\nEnter herb type (or 'done' to finish): ";
+        std::string userChoice;
+        std::getline(std::cin, userChoice);
+
+        // Si el usuario termina, salir del bucle
+        if (userChoice == "done" || userChoice == "DONE") {
+            break;
+        }
+
+        // Agregar la hierba seleccionada a la pizza
+        selector.AddIngredientToPizza(userChoice, selectedIngredients_);
+    }
+}
 
 // TODO:  Crear cada uno su parte. ☝️ toma el ejemplo de  SelectTomatoes y crea tu propia implementación.
 
@@ -58,7 +94,8 @@ void PizzaBuilder::SelectTomatoes() {
 //}
 //
 //void PizzaBuilder::SelectHerb() {
-//    // Resolver.    
+
+   // Resolver.    
 //}
 //
 //void PizzaBuilder::SelectMeat() {
