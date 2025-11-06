@@ -30,7 +30,7 @@
     <ClCompile Include="TomatoesRepository.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CheeseRepository.cpp">
+    <ClCompile Include="HerbsRepository.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -47,7 +47,7 @@
     <ClInclude Include="TomatoesRepository.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CheeseRepository.h">
+    <ClInclude Include="HerbsRepository.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
